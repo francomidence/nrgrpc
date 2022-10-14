@@ -1,4 +1,4 @@
-module github.com/francomidence/nrgrpc/v1
+module github.com/francomidence/nrgrpc
 
 require (
 	github.com/golang/protobuf v0.0.0-20170920220647-130e6b02ab05
