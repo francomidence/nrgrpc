@@ -3,7 +3,7 @@ package nrgrpc
 import (
 	"context"
 
-	"github.com/newrelic/go-agent"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/stats"
