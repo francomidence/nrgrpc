@@ -11,7 +11,7 @@ import (
 )
 
 // NewServerStatsHandler creates a new stats.Handler instance for measuring application performances with New Relic.
-func NewServerStatsHandler(app newrelic.Application, opts ...Option) stats.Handler {
+func NewServerStatsHandler(app *newrelic.Application, opts ...Option) stats.Handler {
 	return &serverStatsHandlerImpl{
 		app:  app,
 		opts: composeOptions(opts),
@@ -19,7 +19,7 @@ func NewServerStatsHandler(app newrelic.Application, opts ...Option) stats.Handl
 }
 
 type serverStatsHandlerImpl struct {
-	app  newrelic.Application
+	app  *newrelic.Application
 	opts Options
 }
 
