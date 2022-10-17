@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	newrelic "github.com/newrelic/go-agent"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -16,7 +16,7 @@ type request struct {
 
 var (
 	mappedHeaders = []struct{ from, to string }{
-		{from: newrelic.DistributedTracePayloadHeader},
+		{from: newrelic.DistributedTraceNewRelicHeader},
 		{from: "user-agent"},
 		{from: "x-request-start", to: "x-request-start"},
 		{from: "x-queue-start", to: "x-queue-start"},
@@ -41,9 +41,9 @@ func newRequest(ctx context.Context, fullMethodName string) newrelic.WebRequest 
 		}
 	}
 
-	return &request{
-		url:    &url.URL{Path: fullMethodName},
-		header: h,
+	return newrelic.WebRequest{
+		URL:    &url.URL{Path: fullMethodName},
+		Header: h,
 	}
 }
 
